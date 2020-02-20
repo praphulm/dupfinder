@@ -1,3 +1,5 @@
+# File comparison code
+
 import hashlib
 import shelve
 import glob
