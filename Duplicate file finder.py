@@ -8,7 +8,7 @@ from pathlib import Path
 import os
 import shutil
 
-
+# Function to compute the hash value of a file
 def file_hash (file_path):
     hasher = hashlib.sha1()
     with open(file_path, 'rb') as afile:
@@ -29,10 +29,9 @@ def main():
     args = vars(ap.parse_args())
     print (args)
     
-    # loop over the image dataset including sub-directories
+    # loop over the files in the directory including sub-directories
     p = Path(args["input"])
 
-    # if p.is_dir():
     if os.path.isdir(p.__str__()):
         files = list(p.rglob(args["extension"]))
         # open the shelve database
@@ -50,7 +49,7 @@ def main():
         print ("Invalid source path:", p.__str__())
         return
 
-    ## Search for duplicate images
+    # Search for duplicate file
     m = args["move"]
 
     if m.__sizeof__() > 0:
@@ -74,7 +73,3 @@ def main():
 
 if __name__ == "__main__":
     main()   
-
-
-
-
